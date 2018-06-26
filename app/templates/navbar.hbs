@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{#link-to 'index' class="navbar-brand"}}Bad Reads{{/link-to}}
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav">
+        {{#nav-link-to 'index'}}Home{{/nav-link-to}}
+        {{!-- {{#nav-link-to ''}}Add Book{{/nav-link-to}}
+        {{#nav-link-to ''}}Explore{{/nav-link-to}}
+        {{#nav-link-to ''}}My Books{{/nav-link-to}}
+        {{#nav-link-to ''}}Users{{/nav-link-to}} --}}
+      </ul>
+
+      {{!-- <ul class="nav navbar-nav navbar-right">
+        {{#nav-link-to ''}}About{{/nav-link-to}}
+        {{#nav-link-to ''}}Contact{{/nav-link-to}}
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {{#nav-link-to ''}}Profile{{/nav-link-to}}
+            {{#nav-link-to ''}}Settings{{/nav-link-to}}
+            <li class="divider"></li>
+            {{#nav-link-to '#'}}Sign Out{{/nav-link-to}}
+          </ul>
+        </li>
+      </ul> --}}
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
