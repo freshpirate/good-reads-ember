@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class='col-sm-3'>
+            <div style="margin-top: 17px"><img src={{model.cover}} alt={{model.title}}></div>
+
+            {{!-- Render Drop Down to bookmark --}}
+        </div>
+
+        <div class='col-sm-9'>
+            <div class="">
+            <h2 style="text-align: left;">{{model.title}}</h2>
+            </div>
+
+            <div class="">
+            <h5>by {{model.author}}</h5>
+            </div>
+
+            <div class="synopsis">
+            <p>{{model.synopsis}}</p>
+            </div>
+
+            <hr>
+            <p>
+                <b>Average Rating:</b>
+                {{model.average_rating}}
+            </p>
+
+            <p>
+                <b>Published year:</b>
+                {{model.published_year}}
+            </p>
+
+            <p>
+                <b>Language:</b>
+                {{model.language}}
+            </p>
+
+            <p>
+                <b>Publisher:</b>
+                {{model.publisher}}
+            </p>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewModal">
+                {{!-- <% if @book.book_relationships.find_by_user_id(current_user).nil? %>
+                Add a Review
+                <% else %>
+                Update Review
+                <% end %> --}}
+
+                Add Review
+            </button>
+        </div>
+
+        {{!-- Render Modal to add review --}}
+    </div>
+    <div class="row">
+        {{outlet}}
+    </div>
+</div>
