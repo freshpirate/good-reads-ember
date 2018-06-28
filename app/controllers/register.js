@@ -67,6 +67,8 @@ export default Controller.extend({
                     _that.set('password', '');
                     _that.set('password_confirm', '');
 
+                    
+
                     setTimeout(function(){
                         _that.transitionToRoute('index');
                     }, 3000);

@@ -8,6 +8,10 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('register');
+  this.route('books', function(){
+    this.route('book', { path: '/:book_id' });
+    this.route('edit', { path: '/edit/:book_id' });
+  });
 });
 
 export default Router;
