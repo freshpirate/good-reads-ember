@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('show', { path: '/:book_id' });
     this.route('edit', { path: '/edit/:book_id' });
   });
+  this.route('user-session');
 });
 
 export default Router;

@@ -20,20 +20,29 @@
         {{!-- {{#nav-link-to ''}}Users{{/nav-link-to}} --}}
       </ul>
 
-      {{!-- <ul class="nav navbar-nav navbar-right">
-        {{#nav-link-to ''}}About{{/nav-link-to}}
-        {{#nav-link-to ''}}Contact{{/nav-link-to}}
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span
-              class="caret"></span></a>
-          <ul class="dropdown-menu">
-            {{#nav-link-to ''}}Profile{{/nav-link-to}}
-            {{#nav-link-to ''}}Settings{{/nav-link-to}}
-            <li class="divider"></li>
-            {{#nav-link-to '#'}}Sign Out{{/nav-link-to}}
-          </ul>
-        </li>
-      </ul> --}}
+      <ul class="nav navbar-nav navbar-right">
+        {{!-- {{#nav-link-to ''}}About{{/nav-link-to}}
+        {{#nav-link-to ''}}Contact{{/nav-link-to}} --}}
+
+        {{#if userSignedIn }}
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span
+                class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {{!-- {{#nav-link-to ''}}Profile{{/nav-link-to}} --}}
+              {{!-- {{#nav-link-to ''}}Settings{{/nav-link-to}} --}}
+              <li class="divider"></li>
+              <li><a href="" {{action 'signOut'}}>Sign Out</a></li>
+            </ul>
+          </li>
+        {{else}}
+          {{#nav-link-to 'register'}}Register{{/nav-link-to}}
+          {{#nav-link-to 'user-session'}}Login{{/nav-link-to}}
+        {{/if}}
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+{{log 'test' userSignedIn}}
+{{log 'test2' semaphore}}

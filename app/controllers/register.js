@@ -3,13 +3,13 @@ import { gte, and, not, match } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import ENV from '../config/environment';
 import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
-let $ = Ember.$;
 
 export default Controller.extend({
     ajax: Ember.inject.service(),
-    // session: Ember.inject.service('session'),
-    
+    cookies: service(),
+
     name: '',
     email: '',
     password: '',
@@ -35,7 +35,11 @@ export default Controller.extend({
     isDisabled: not('isValid'),
     actions: {
         register(){
-            let _that = this;
+            console.log("***************");
+            let cookieService = this.get('cookies');
+            cookieService.clear('gr_api_key');
+
+            console.log(this.get('cookies').read());
 
             let data = {
                 name: this.get('name'),
@@ -51,26 +55,26 @@ export default Controller.extend({
                 }
             );
 
-            request.then((response)=> {
-                _that.set('errorMessages', '');
-                _that.set('successMessages', '');
+            request.then(response=> {
+                this.set('errorMessages', '');
+                this.set('successMessages', '');
 
                 console.log(response);
                 if (response.error){
-                    _that.set('errorMessages', response.status.messages);
-                    _that.set('password', '');
-                    _that.set('password_confirm', '');
+                    this.set('errorMessages', response.status.messages);
+                    this.set('password', '');
+                    this.set('password_confirm', '');
                 }else{
-                    _that.set('successMessages', ['Registered Successfully!']);
-                    _that.set('name', '');
-                    _that.set('email', '');
-                    _that.set('password', '');
-                    _that.set('password_confirm', '');
+                    this.set('successMessages', ['Registered Successfully!']);
+                    this.set('name', '');
+                    this.set('email', '');
+                    this.set('password', '');
+                    this.set('password_confirm', '');
 
-                    
+                    cookieService.write('gr_api_key', response.user.persistence_token);
 
-                    setTimeout(function(){
-                        _that.transitionToRoute('index');
+                    setTimeout(() => {
+                        this.transitionToRoute('index');
                     }, 3000);
                 }
             });
