@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
-    queryParams: ['page', 'perPage'],
+    // queryParams: ['page', 'perPage'],
     
     // binding the property on the paged array
   // to the query params on the controller

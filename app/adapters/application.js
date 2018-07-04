@@ -17,6 +17,38 @@ export default RESTAdapter.extend({
         this.set('headers', {
             'API_KEY': key
         })
+    },
+
+    buildURL(modelName, id, snapshot, requestType, query){
+
+        var url = this._super(modelName, id, snapshot, requestType, query);
+        console.log(url);
+        return url + '.json';
     }
+
+    // pathForType(type){
+    //     console.log('******************');
+    //     console.log(type);
+        
+    //     return  pluralize(type) + '.json';
+    // },
+
+    // buildURL(modelName, id, snapshot, requestType, query){
+
+    //     // console.log('**************');
+    //     // console.log(modelName);
+    //     // console.log(id);
+    //     // console.log(snapshot);
+    //     // console.log(requestType);
+    //     // console.log(query);
+
+    //     let url = this._super(modelName, id, snapshot, requestType, query);
+
+    //     // console.log('**************');
+    //     // console.log(url);
+
+    //     url = 'http://localhost:3000/user_sessions.json';
+    //     return url;
+    // }
 
 });

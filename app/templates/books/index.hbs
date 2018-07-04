@@ -1,5 +1,7 @@
 <h1>Books</h1>
 
+{{page-numbers content=model}}
+
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -18,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-  {{#each model as |book|}}
+  {{#each model.content as |book|}}
     <tr>
       <th><img src={{book.cover}} alt={{book.title}} width="100px"></th>
       <td>{{book.id}}</td>
@@ -35,6 +37,6 @@
     </tr>
   {{/each}}
   </tbody>
-
-  {{page-numbers content=content}}
 </table>
+
+{{page-numbers content=model}}

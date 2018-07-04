@@ -10,11 +10,11 @@ export default DS.RESTSerializer.extend({
             return;
         }
         
-        payload = {
-            books: payload
-        };
+        // payload = {
+        //     books: payload
+        // };
 
-        // console.log(payload);
+        console.log(payload);
 
         return this._super(store, primaryModelClass, payload, id, requestType);
     }

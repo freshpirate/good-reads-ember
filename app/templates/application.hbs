@@ -1,5 +1,20 @@
 {{partial 'navbar'}}
 <div class="container">
+    {{!-- {{#if flashMessage}}
+        <div class="alert alert-{{flashType}}">{{flashMessage}}</div>
+    {{/if}} --}}
+
+    {{#each flashMessages.queue as |flash|}}
+        {{#flash-message flash=flash as |component flash|}}
+            {{#if flash.componentName}}
+            {{component flash.componentName content=flash.content}}
+            {{else}}
+            {{!-- <h6>{{component.flashType}}</h6> --}}
+            <p>{{flash.message}}</p>
+            {{/if}}
+        {{/flash-message}}
+    {{/each}}
+
     {{outlet}}
 </div>
 {{partial 'footer'}}

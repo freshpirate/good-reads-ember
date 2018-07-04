@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller from 'good-reads-ember/controllers/application';
 import { gte, and, not, match } from '@ember/object/computed';
 import { computed } from '@ember/object';
 import ENV from '../config/environment';
@@ -61,11 +61,12 @@ export default Controller.extend({
 
                 console.log(response);
                 if (response.error){
-                    this.set('errorMessages', response.status.messages);
+                    this.get('flashMessages').danger(response.status.messages);
                     this.set('password', '');
                     this.set('password_confirm', '');
                 }else{
-                    this.set('successMessages', ['Registered Successfully!']);
+                    this.get('flashMessages').success("Registered Successfully!");
+
                     this.set('name', '');
                     this.set('email', '');
                     this.set('password', '');
@@ -73,9 +74,11 @@ export default Controller.extend({
 
                     cookieService.write('gr_api_key', response.user.persistence_token);
 
+                    this.transitionToRoute('index');
                     setTimeout(() => {
-                        this.transitionToRoute('index');
-                    }, 3000);
+                        this.set('userSignedIn', true);
+                        console.log('SEMAPHORE: ', this.get('userSignedIn'));
+                    }, 2500);
                 }
             });
 
